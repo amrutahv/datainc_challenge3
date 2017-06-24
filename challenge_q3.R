@@ -59,3 +59,15 @@ plot2 <- ggplot(class_live,aes(x = x, y = freq, fill = freq)) +
        y = "Number of CITES entries")+
   theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 12))
 plot2
+
+### plotting the top 5 traded genera 
+plot3 <- sub_live_aves[order(sub_live_aves$freq, decreasing = T)[1:5],] %>%
+  ggplot(aes(x,freq, fill = freq))+
+  geom_bar(stat = 'identity')+
+  scale_fill_continuous(name = "#CITES entries", low = "sandybrown", high = "plum")+
+  theme_bw(base_size = 16)+
+  labs(title = "Top 5 species of birds traded under CITES entries from 1975-2016",
+       x = "Genus",
+       y = "Number of CITES entries")+
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 14))
+plot3
